@@ -1,0 +1,28 @@
+components/
+│
+├── pipes/
+│   ├── PipeStraight.jsx
+│   ├── PipeElbow.jsx
+│   ├── PipeTee.jsx
+│   ├── PipeCross.jsx
+│   ├── PipeReducer.jsx
+│   ├── PipeFlexible.jsx
+│   └── PipeArrow.jsx
+|
+|       PipeCap.jsx
+|       PipeFlange.jsx
+        PipeUnion.jsx
+        PipeExpansion.jsx
+        PipeManifold.jsx
+        PipeHeader.jsx
+        PipeDrain.jsx
+        PipeVent.jsx
+        PipeBypass.jsx
+        PipeJump.jsx
+        PipeBridge.jsx
+        PipeCrossOver.jsx
+│
+├── valves/
+├── pumps/
+├── tanks/
+└── instruments/

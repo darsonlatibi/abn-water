@@ -1,0 +1,21 @@
+Kalau yang dimaksud push button berdasarkan fungsi, umumnya dikelompokkan menjadi 2 jenis utama, yaitu:
+
+Normally Open (NO)
+Kontak terbuka saat tidak ditekan.
+Saat tombol ditekan, kontak menutup dan arus mengalir.
+Contoh fungsi: tombol Start.
+Normally Closed (NC)
+Kontak tertutup saat tidak ditekan.
+Saat tombol ditekan, kontak membuka dan memutus arus.
+Contoh fungsi: tombol Stop atau Emergency Stop.
+
+Pada panel kontrol industri, tombol juga sering dikelompokkan berdasarkan tujuan penggunaannya menjadi:
+
+Start Button → menjalankan peralatan.
+Stop Button → menghentikan peralatan.
+Reset Button → mengembalikan sistem setelah trip atau fault.
+Emergency Stop (E-Stop) → menghentikan sistem secara darurat.
+Jog/Inching Button → menjalankan motor selama tombol ditekan.
+Selector Push Button → memilih mode atau fungsi tertentu.
+
+Jadi, berdasarkan fungsi operasinya secara dasar ada 2 kelompok (NO dan NC), sedangkan berdasarkan tujuan penggunaannya dapat dibagi menjadi beberapa jenis seperti Start, Stop, Reset, Jog, dan Emergency Stop.

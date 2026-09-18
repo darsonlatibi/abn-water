@@ -1,0 +1,124 @@
+.rungkut-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #0f172a;
+
+  overflow: auto;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.rungkut-header {
+  width: 100%;
+  min-height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #1f2937;
+  color: #ffffff;
+
+  border-bottom: 3px solid #0dcaf0;
+
+  box-sizing: border-box;
+}
+
+.rungkut-header-side {
+  width: 100px;
+  min-width: 100px;
+}
+
+.rungkut-header-title {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* =====================================================
+   SVG CONTAINER
+===================================================== */
+
+.rungkut-svg-container {
+  width: 100%;
+
+  background: #000000;
+
+  overflow-x: auto;
+  overflow-y: auto;
+
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   SVG
+===================================================== */
+
+.rungkut-svg {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  background: #000000;
+
+  min-width: 900px;
+}
+
+/* =====================================================
+   LARGE SCREEN
+===================================================== */
+
+@media (min-width: 1200px) {
+  .rungkut-svg {
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+  }
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 991px) {
+  .rungkut-header {
+    min-height: 52px;
+  }
+
+  .rungkut-header-side {
+    width: 70px;
+    min-width: 70px;
+  }
+
+  .rungkut-svg {
+    min-width: 900px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 576px) {
+  .rungkut-header {
+    min-height: 48px;
+  }
+
+  .rungkut-header-side {
+    width: 50px;
+    min-width: 50px;
+  }
+
+  .rungkut-svg {
+    min-width: 850px;
+  }
+}

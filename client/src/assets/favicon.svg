@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="#0B6E99"></rect>
+
+  <!-- Water Drop -->
+  <path d="M32 8
+       C32 8 17 26 17 37
+       C17 47.5 23.7 54 32 54
+       C40.3 54 47 47.5 47 37
+       C47 26 32 8 32 8Z" fill="white"></path>
+
+  <!-- Water -->
+  <path d="M21 39
+       C24 36.5 27 36.5 30 39
+       C33 41.5 36 41.5 39 39
+       C41 37.5 43 37.5 45 38.5
+       C44 45.5 39 50 32 50
+       C25 50 21 46 21 39Z" fill="#19B5FE"></path>
+
+  <!-- ABN -->
+  <text x="32" y="33" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="800" letter-spacing="0.5" fill="#0B6E99">
+    ABN
+  </text>
+</svg>
