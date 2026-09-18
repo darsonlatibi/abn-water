@@ -116,7 +116,11 @@ app.use(express.static(WATER_DIST));
  * SPA FALLBACK
  * ========================================================= */
 
-app.get("*", (req, res) => {
+app.use((req, res, next) => {
+  if (req.path.startsWith("/api/")) {
+    return next();
+  }
+
   res.sendFile(path.join(WATER_DIST, "index.html"));
 });
 
