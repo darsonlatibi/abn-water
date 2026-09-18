@@ -5,6 +5,7 @@ import WaterSite from "./WaterSite.js";
 import Device from "./Device.js";
 import Sensor from "./Sensor.js";
 import SensorReading from "./SensorReading.js";
+import SensorAlert from "./SensorAlert.js";
 
 // ========================================
 // WATER SITE → DEVICE
@@ -78,6 +79,36 @@ SensorReading.belongsTo(Device, {
   onDelete: "RESTRICT",
 });
 
+// SENSOR -> SENSOR ALERT
+Sensor.hasMany(SensorAlert, {
+  foreignKey: "sensorId",
+  as: "alerts",
+  onUpdate: "CASCADE",
+  onDelete: "RESTRICT",
+});
+
+SensorAlert.belongsTo(Sensor, {
+  foreignKey: "sensorId",
+  as: "sensor",
+  onUpdate: "CASCADE",
+  onDelete: "RESTRICT",
+});
+
+// DEVICE -> SENSOR ALERT
+Device.hasMany(SensorAlert, {
+  foreignKey: "deviceId",
+  as: "alerts",
+  onUpdate: "CASCADE",
+  onDelete: "RESTRICT",
+});
+
+SensorAlert.belongsTo(Device, {
+  foreignKey: "deviceId",
+  as: "device",
+  onUpdate: "CASCADE",
+  onDelete: "RESTRICT",
+});
+
 // ========================================
 // DATABASE REGISTRY
 // ========================================
@@ -89,6 +120,7 @@ const db = {
   Device,
   Sensor,
   SensorReading,
+  SensorAlert,
 };
 
 export default db;

@@ -9,6 +9,7 @@ import waterSiteRoutes from "./routes/waterSite.routes.js";
 import deviceRoutes from "./routes/device.routes.js";
 import sensorRoutes from "./routes/sensor.routes.js";
 import sensorReadingRoutes from "./routes/sensorReading.routes.js";
+import sensorAlertRoutes from "./routes/sensorAlert.routes.js";
 
 dotenv.config();
 
@@ -84,6 +85,7 @@ app.use("/api/water-sites", waterSiteRoutes);
 app.use("/api/devices", deviceRoutes);
 app.use("/api/sensors", sensorRoutes);
 app.use("/api/sensor-readings", sensorReadingRoutes);
+app.use("/api/sensor-alerts", sensorAlertRoutes);
 
 // ========================================
 // 404
