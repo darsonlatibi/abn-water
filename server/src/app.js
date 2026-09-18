@@ -55,9 +55,25 @@ app.use(
  * CORS
  * ========================================================= */
 
-const allowedOrigins = CLIENT_URL.split(",")
+/* =========================================================
+ * CORS
+ * ========================================================= */
+
+const configuredOrigins = CLIENT_URL.split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
+
+const developmentOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "http://localhost:5001",
+  "http://127.0.0.1:5001",
+];
+
+const allowedOrigins = new Set([
+  ...configuredOrigins,
+  ...(isProduction ? [] : developmentOrigins),
+]);
 
 app.use(
   cors({
@@ -67,9 +83,11 @@ app.use(
         return callback(null, true);
       }
 
-      if (allowedOrigins.includes(origin)) {
+      if (allowedOrigins.has(origin)) {
         return callback(null, true);
       }
+
+      console.warn(`[CORS] Blocked origin: ${origin}`);
 
       return callback(new Error("Not allowed by CORS"));
     },
