@@ -5,6 +5,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
+import waterSiteRoutes from "./routes/waterSite.routes.js";
+
 dotenv.config();
 
 const app = express();
@@ -13,24 +15,43 @@ const PORT = process.env.PORT || 5001;
 const HOST = process.env.HOST || "0.0.0.0";
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
+// ========================================
+// SECURITY
+// ========================================
+
 app.use(helmet());
+
+// ========================================
+// CORS
+// ========================================
 
 app.use(
   cors({
     origin: CLIENT_URL,
     credentials: true,
-  })
+  }),
 );
+
+// ========================================
+// BODY PARSER
+// ========================================
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// ========================================
+// LOGGER
+// ========================================
+
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
 
-// Health check
+// ========================================
+// HEALTH CHECK
+// ========================================
+
 app.get("/api/health", (req, res) => {
   res.json({
     success: true,
@@ -40,7 +61,10 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Root
+// ========================================
+// ROOT
+// ========================================
+
 app.get("/", (req, res) => {
   res.json({
     success: true,
@@ -49,17 +73,30 @@ app.get("/", (req, res) => {
   });
 });
 
+// ========================================
+// API ROUTES
+// ========================================
+
+app.use("/api/water-sites", waterSiteRoutes);
+
+// ========================================
 // 404
+// ========================================
+
 app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "API endpoint not found",
+    path: req.originalUrl,
   });
 });
 
-// Error handler
+// ========================================
+// ERROR HANDLER
+// ========================================
+
 app.use((err, req, res, next) => {
-  console.error(err);
+  console.error("API ERROR:", err);
 
   res.status(err.status || 500).json({
     success: false,
@@ -67,7 +104,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, HOST, () => {
+// ========================================
+// START SERVER
+// ========================================
+
+const server = app.listen(PORT, HOST, () => {
   console.log("");
   console.log("========================================");
   console.log("       ABN WATER API SERVER");
@@ -78,6 +119,19 @@ app.listen(PORT, HOST, () => {
   console.log(`Client URL  : ${CLIENT_URL}`);
   console.log(`API         : http://localhost:${PORT}`);
   console.log(`Health      : http://localhost:${PORT}/api/health`);
+  console.log(`Water Sites : http://localhost:${PORT}/api/water-sites`);
   console.log("========================================");
   console.log("");
+  console.log("SERVER LISTENING:", server.listening);
+});
+
+server.on("error", (error) => {
+  console.error("");
+  console.error("SERVER ERROR:");
+  console.error(error);
+});
+
+server.on("close", () => {
+  console.log("");
+  console.log("SERVER CLOSED");
 });
