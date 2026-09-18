@@ -1,0 +1,83 @@
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import helmet from "helmet";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
+
+dotenv.config();
+
+const app = express();
+
+const PORT = process.env.PORT || 5001;
+const HOST = process.env.HOST || "0.0.0.0";
+const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
+
+app.use(helmet());
+
+app.use(
+  cors({
+    origin: CLIENT_URL,
+    credentials: true,
+  })
+);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
+
+// Health check
+app.get("/api/health", (req, res) => {
+  res.json({
+    success: true,
+    service: "ABN Water API",
+    status: "online",
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Root
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "ABN Water API",
+    version: "1.0.0",
+  });
+});
+
+// 404
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "API endpoint not found",
+  });
+});
+
+// Error handler
+app.use((err, req, res, next) => {
+  console.error(err);
+
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || "Internal server error",
+  });
+});
+
+app.listen(PORT, HOST, () => {
+  console.log("");
+  console.log("========================================");
+  console.log("       ABN WATER API SERVER");
+  console.log("========================================");
+  console.log(`Environment : ${process.env.NODE_ENV || "development"}`);
+  console.log(`Host        : ${HOST}`);
+  console.log(`Port        : ${PORT}`);
+  console.log(`Client URL  : ${CLIENT_URL}`);
+  console.log(`API         : http://localhost:${PORT}`);
+  console.log(`Health      : http://localhost:${PORT}/api/health`);
+  console.log("========================================");
+  console.log("");
+});
