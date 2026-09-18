@@ -39,7 +39,17 @@ const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
  * SECURITY
  * ========================================================= */
 
-app.use(helmet());
+const isProduction = process.env.NODE_ENV === "production";
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        "upgrade-insecure-requests": isProduction ? [] : null,
+      },
+    },
+  }),
+);
 
 /* =========================================================
  * CORS
