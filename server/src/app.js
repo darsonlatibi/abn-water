@@ -6,6 +6,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
 import waterSiteRoutes from "./routes/waterSite.routes.js";
+import deviceRoutes from "./routes/device.routes.js";
 
 dotenv.config();
 
@@ -78,6 +79,7 @@ app.get("/", (req, res) => {
 // ========================================
 
 app.use("/api/water-sites", waterSiteRoutes);
+app.use("/api/devices", deviceRoutes);
 
 // ========================================
 // 404
