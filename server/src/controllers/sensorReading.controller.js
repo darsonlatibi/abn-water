@@ -1,5 +1,6 @@
 //import { Op } from "sequelize";
 import db from "../models/index.js";
+import { evaluateSensorAlert } from "../services/sensorAlert.service.js";
 
 const { SensorReading, Sensor, Device } = db;
 
@@ -268,6 +269,24 @@ export const createSensorReading = async (req, res) => {
     });
 
     // ------------------------------------
+    // UPDATE DEVICE HEARTBEAT
+    // ------------------------------------
+
+    const device = await Device.findByPk(resolvedDeviceId);
+
+    if (device) {
+      const deviceUpdate = {
+        lastSeenAt: new Date(),
+      };
+
+      if (device.status === "online" || device.status === "offline") {
+        deviceUpdate.status = "online";
+      }
+
+      await device.update(deviceUpdate);
+    }
+
+    // ------------------------------------
     // UPDATE SENSOR LAST VALUE
     // ------------------------------------
 
@@ -278,10 +297,28 @@ export const createSensorReading = async (req, res) => {
       });
     }
 
+    // ------------------------------------
+    // EVALUATE SENSOR ALERT
+    // ------------------------------------
+
+    const alertResult = await evaluateSensorAlert({
+      sensor,
+      deviceId: resolvedDeviceId,
+      value,
+      quality,
+      timestamp: readingTimestamp,
+      metadata,
+    });
+
+    // ------------------------------------
+    // RESPONSE
+    // ------------------------------------
+
     res.status(201).json({
       success: true,
       message: "Sensor reading created successfully",
       data: reading,
+      alert: alertResult,
     });
   } catch (error) {
     console.error("createSensorReading:", error);

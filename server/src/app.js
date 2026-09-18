@@ -10,6 +10,7 @@ import deviceRoutes from "./routes/device.routes.js";
 import sensorRoutes from "./routes/sensor.routes.js";
 import sensorReadingRoutes from "./routes/sensorReading.routes.js";
 import sensorAlertRoutes from "./routes/sensorAlert.routes.js";
+import { startDeviceOfflineMonitor } from "./services/deviceOfflineMonitor.service.js";
 
 dotenv.config();
 
@@ -131,6 +132,7 @@ const server = app.listen(PORT, HOST, () => {
   console.log("========================================");
   console.log("");
   console.log("SERVER LISTENING:", server.listening);
+  startDeviceOfflineMonitor();
 });
 
 server.on("error", (error) => {
