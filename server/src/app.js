@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 
 import waterSiteRoutes from "./routes/waterSite.routes.js";
 import deviceRoutes from "./routes/device.routes.js";
+import sensorRoutes from "./routes/sensor.routes.js";
 
 dotenv.config();
 
@@ -80,6 +81,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/water-sites", waterSiteRoutes);
 app.use("/api/devices", deviceRoutes);
+app.use("/api/sensors", sensorRoutes);
 
 // ========================================
 // 404
