@@ -24,9 +24,9 @@ function Login() {
      FORM STATE
      ======================================================= */
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("guest@abn.web.id");
 
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("123456");
 
   const [showPassword, setShowPassword] = useState(false);
 
