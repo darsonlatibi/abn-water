@@ -1,0 +1,1931 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1800 1050"
+     width="1800"
+     height="1050">
+
+  <defs>
+
+    <!-- BACKGROUND -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#dbe4ec"/>
+    </linearGradient>
+
+    <!-- HEADER -->
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#164e63"/>
+    </linearGradient>
+
+    <!-- WATER -->
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset=".5" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <!-- STEEL -->
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset=".45" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cbd5e1"/>
+    </linearGradient>
+
+    <!-- SILICA -->
+    <linearGradient id="sand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f1d39b"/>
+      <stop offset=".5" stop-color="#d6ae70"/>
+      <stop offset="1" stop-color="#b9823f"/>
+    </linearGradient>
+
+    <!-- CARBON -->
+    <linearGradient id="carbon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#374151"/>
+      <stop offset=".5" stop-color="#111827"/>
+      <stop offset="1" stop-color="#030712"/>
+    </linearGradient>
+
+    <!-- MANGANESE -->
+    <linearGradient id="manganese" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b45309"/>
+      <stop offset=".5" stop-color="#92400e"/>
+      <stop offset="1" stop-color="#713f12"/>
+    </linearGradient>
+
+    <!-- SHADOW -->
+    <filter id="shadow"
+            x="-30%"
+            y="-30%"
+            width="160%"
+            height="160%">
+      <feDropShadow dx="0"
+                    dy="5"
+                    stdDeviation="6"
+                    flood-opacity=".18"/>
+    </filter>
+
+    <filter id="softShadow"
+            x="-30%"
+            y="-30%"
+            width="160%"
+            height="160%">
+      <feDropShadow dx="0"
+                    dy="3"
+                    stdDeviation="3"
+                    flood-opacity=".15"/>
+    </filter>
+
+    <!-- ARROW -->
+    <marker id="arrow"
+            markerWidth="10"
+            markerHeight="10"
+            refX="8"
+            refY="5"
+            orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z"
+            fill="#0f766e"/>
+    </marker>
+
+    <style>
+
+      .title{
+        font:700 30px Arial,sans-serif;
+        fill:#f8fafc;
+        letter-spacing:.5px;
+      }
+
+      .subtitle{
+        font:500 13px Arial,sans-serif;
+        fill:#cbd5e1;
+      }
+
+      .section{
+        font:700 16px Arial,sans-serif;
+        fill:#0f172a;
+      }
+
+      .label{
+        font:700 14px Arial,sans-serif;
+        fill:#0f172a;
+      }
+
+      .small{
+        font:500 11px Arial,sans-serif;
+        fill:#475569;
+      }
+
+      .tiny{
+        font:500 9px Arial,sans-serif;
+        fill:#64748b;
+      }
+
+      .tag{
+        font:700 10px Arial,sans-serif;
+        fill:#0369a1;
+      }
+
+      .value{
+        font:700 13px Arial,sans-serif;
+        fill:#0f766e;
+      }
+
+      .equip{
+        fill:url(#steel);
+        stroke:#334155;
+        stroke-width:2;
+      }
+
+      .sensor{
+        fill:#ffffff;
+        stroke:#0f766e;
+        stroke-width:2;
+      }
+
+      .panel{
+        fill:#0f172a;
+        stroke:#334155;
+        stroke-width:2;
+      }
+
+      .screen{
+        fill:#ecfeff;
+        stroke:#0891b2;
+        stroke-width:2;
+      }
+
+      .tank{
+        fill:url(#water);
+        opacity:.86;
+      }
+
+      .pipe{
+        fill:none;
+        stroke:#0f766e;
+        stroke-width:7;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        marker-end:url(#arrow);
+      }
+
+      .pipeThin{
+        fill:none;
+        stroke:#0f766e;
+        stroke-width:4;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+      }
+
+      .flow{
+        fill:none;
+        stroke:#bae6fd;
+        stroke-width:4;
+        stroke-dasharray:18 12;
+        animation:flow 1.2s linear infinite;
+      }
+
+      .waterWave{
+        fill:none;
+        stroke:#e0f7ff;
+        stroke-width:2;
+        stroke-linecap:round;
+        opacity:.75;
+        animation:wave 2s ease-in-out infinite;
+      }
+
+      .statusGreen{
+        fill:#22c55e;
+        animation:pulse 1.5s ease-in-out infinite;
+      }
+
+      .valve{
+        fill:#ffffff;
+        stroke:#0f766e;
+        stroke-width:3;
+      }
+
+      .gridLine{
+        stroke:#cbd5e1;
+        stroke-width:1;
+        opacity:.45;
+      }
+
+      @keyframes flow{
+        to{
+          stroke-dashoffset:-60;
+        }
+      }
+
+      @keyframes pulse{
+        50%{
+          opacity:.4;
+        }
+      }
+
+      @keyframes wave{
+        50%{
+          transform:translateX(5px);
+        }
+      }
+
+    </style>
+  </defs>
+
+
+  <!-- ========================================================= -->
+  <!-- BACKGROUND -->
+  <!-- ========================================================= -->
+
+  <rect width="1800"
+        height="1050"
+        fill="url(#bg)"/>
+
+  <g opacity=".35">
+
+    <path d="M50 150 H1750
+             M50 550 H1750
+             M50 900 H1750"
+          class="gridLine"/>
+
+    <path d="M400 145 V1000
+             M800 145 V1000
+             M1200 145 V1000
+             M1600 145 V1000"
+          class="gridLine"/>
+
+  </g>
+
+
+  <!-- MAIN CARD -->
+
+  <rect x="35"
+        y="30"
+        width="1730"
+        height="990"
+        rx="24"
+        fill="#ffffff"
+        opacity=".94"
+        filter="url(#shadow)"/>
+
+
+  <!-- ========================================================= -->
+  <!-- HEADER -->
+  <!-- ========================================================= -->
+
+  <rect x="35"
+        y="30"
+        width="1730"
+        height="105"
+        rx="24"
+        fill="url(#headerGrad)"/>
+
+  <rect x="35"
+        y="105"
+        width="1730"
+        height="30"
+        fill="url(#headerGrad)"/>
+
+  <circle cx="78"
+          cy="68"
+          r="8"
+          class="statusGreen"/>
+
+  <text x="100"
+        y="70"
+        class="title">
+    ABN WATER TREATMENT CONTROL
+  </text>
+
+  <text x="100"
+        y="98"
+        class="subtitle">
+    Industrial Water Treatment Plant • Process Mimic &amp; Monitoring System
+  </text>
+
+  <!-- PLANT STATUS -->
+
+  <rect x="1515"
+        y="54"
+        width="190"
+        height="48"
+        rx="12"
+        fill="#022c22"
+        stroke="#16a34a"
+        stroke-width="1.5"/>
+
+  <circle cx="1540"
+          cy="78"
+          r="7"
+          class="statusGreen"/>
+
+  <text x="1555"
+        y="74"
+        font-family="Arial"
+        font-size="10"
+        fill="#86efac">
+    PLANT STATUS
+  </text>
+
+  <text x="1555"
+        y="91"
+        font-family="Arial"
+        font-size="15"
+        font-weight="700"
+        fill="#ffffff">
+    RUNNING
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- PROCESS TITLE -->
+  <!-- ========================================================= -->
+
+  <text x="75"
+        y="174"
+        class="section">
+    WATER TREATMENT PROCESS
+  </text>
+
+  <line x1="75"
+        y1="184"
+        x2="1725"
+        y2="184"
+        stroke="#cbd5e1"
+        stroke-width="2"/>
+
+
+  <!-- ========================================================= -->
+  <!-- MAIN PROCESS FLOW -->
+  <!-- ========================================================= -->
+
+  <path class="pipe" d="M175 330 H235"/>
+  <path class="pipe" d="M330 330 H420"/>
+  <path class="pipe" d="M515 330 H600"/>
+  <path class="pipe" d="M695 330 H780"/>
+  <path class="pipe" d="M875 330 H960"/>
+  <path class="pipe" d="M1055 330 H1140"/>
+  <path class="pipe" d="M1235 330 H1320"/>
+  <path class="pipe" d="M1415 330 H1500"/>
+  <path class="pipe" d="M1595 330 H1680"/>
+
+  <path class="flow"
+        d="M175 330 H1680"/>
+
+
+  <!-- ========================================================= -->
+  <!-- 01 RAW WATER INTAKE -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(65 250)"
+     filter="url(#softShadow)">
+
+    <rect width="110"
+          height="160"
+          rx="14"
+          class="equip"/>
+
+    <rect x="15"
+          y="35"
+          width="80"
+          height="78"
+          rx="5"
+          fill="#e0f2fe"
+          stroke="#64748b"
+          stroke-width="2"/>
+
+    <path d="M25 45 V103
+             M42 45 V103
+             M59 45 V103
+             M76 45 V103
+             M93 45 V103"
+          stroke="#64748b"
+          stroke-width="3"/>
+
+    <path d="M18 58 H92
+             M18 77 H92
+             M18 96 H92"
+          stroke="#94a3b8"
+          stroke-width="3"/>
+
+    <circle cx="85"
+            cy="25"
+            r="6"
+            class="statusGreen"/>
+
+    <text x="55"
+          y="140"
+          text-anchor="middle"
+          class="small">
+      RAW INTAKE
+    </text>
+
+    <text x="55"
+          y="153"
+          text-anchor="middle"
+          class="tiny">
+      FI-001
+    </text>
+
+  </g>
+
+  <text x="120"
+        y="445"
+        text-anchor="middle"
+        class="label">
+    Raw Water Intake
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- 02 RAW WATER TANK -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(235 255)"
+     filter="url(#softShadow)">
+
+    <ellipse cx="47"
+             cy="15"
+             rx="47"
+             ry="13"
+             fill="#cbd5e1"
+             stroke="#334155"
+             stroke-width="2"/>
+
+    <rect x="0"
+          y="15"
+          width="94"
+          height="130"
+          rx="4"
+          class="equip"/>
+
+    <rect x="4"
+          y="65"
+          width="86"
+          height="76"
+          class="tank"/>
+
+    <path d="M8 76
+             Q20 70 32 76
+             T56 76
+             T80 76
+             T88 76"
+          class="waterWave"/>
+
+    <ellipse cx="47"
+             cy="145"
+             rx="47"
+             ry="13"
+             fill="#0284c7"
+             opacity=".75"/>
+
+    <text x="47"
+          y="105"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="10"
+          font-weight="700"
+          fill="#ffffff">
+      72%
+    </text>
+
+
+    <!-- LEVEL SENSOR -->
+
+    <rect x="41"
+          y="3"
+          width="12"
+          height="14"
+          rx="2"
+          fill="#334155"/>
+
+    <rect x="15"
+          y="-54"
+          width="64"
+          height="29"
+          rx="6"
+          class="sensor"/>
+
+    <circle cx="24"
+            cy="-40"
+            r="4"
+            class="statusGreen"/>
+
+    <text x="50"
+          y="-37"
+          text-anchor="middle"
+          class="tag">
+      LT-101
+    </text>
+
+    <line x1="47"
+          y1="-25"
+          x2="47"
+          y2="3"
+          class="pipeThin"/>
+
+
+    <!-- BREATHER -->
+
+    <path d="M72 15
+             V-12
+             H82
+             V-25"
+          class="pipeThin"/>
+
+    <path d="M76 -25
+             H88"
+          stroke="#334155"
+          stroke-width="4"
+          stroke-linecap="round"/>
+
+    <text x="76"
+          y="-31"
+          text-anchor="middle"
+          class="tiny">
+      VENT
+    </text>
+
+
+    <!-- MANUAL DRAIN -->
+
+    <path d="M47 145 V175"
+          stroke="#0f766e"
+          stroke-width="5"
+          fill="none"
+          stroke-linecap="round"/>
+
+    <g transform="translate(47 190)">
+
+      <path d="M-16 0
+               L0 -12
+               L0 12 Z
+               M16 0
+               L0 -12
+               L0 12 Z"
+            class="valve"/>
+
+      <circle cx="0"
+              cy="-25"
+              r="10"
+              fill="#ffffff"
+              stroke="#334155"
+              stroke-width="3"/>
+
+      <path d="M-7 -25 H7
+               M0 -32 V-18"
+            stroke="#334155"
+            stroke-width="2.5"
+            stroke-linecap="round"/>
+
+    </g>
+
+    <text x="78"
+          y="190"
+          class="tag">
+      DV-101
+    </text>
+
+    <text x="78"
+          y="202"
+          class="tiny">
+      MANUAL DRAIN
+    </text>
+
+    <text x="47"
+          y="165"
+          text-anchor="middle"
+          class="small">
+      LEVEL 72%
+    </text>
+
+  </g>
+
+  <text x="282"
+        y="475"
+        text-anchor="middle"
+        class="label">
+    Raw Water Tank
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- 03 SCREENING -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(420 270)"
+     filter="url(#softShadow)">
+
+    <rect width="95"
+          height="120"
+          rx="12"
+          class="equip"/>
+
+    <rect x="12"
+          y="18"
+          width="71"
+          height="82"
+          rx="6"
+          fill="#f1f5f9"
+          stroke="#94a3b8"/>
+
+    <path d="M20 25 L78 95
+             M34 25 L78 78
+             M48 25 L78 61
+             M62 25 L78 44"
+          stroke="#475569"
+          stroke-width="6"/>
+
+    <circle cx="78"
+            cy="95"
+            r="7"
+            class="statusGreen"/>
+
+    <text x="47"
+          y="112"
+          text-anchor="middle"
+          class="tiny">
+      SC-101
+    </text>
+
+  </g>
+
+  <text x="467"
+        y="425"
+        text-anchor="middle"
+        class="label">
+    Screening
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- 04 COAGULATION -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(600 260)"
+     filter="url(#softShadow)">
+
+    <rect width="95"
+          height="140"
+          rx="12"
+          class="equip"/>
+
+    <rect x="7"
+          y="65"
+          width="81"
+          height="68"
+          class="tank"/>
+
+    <path d="M47 28 V95
+             M30 45 H64"
+          stroke="#334155"
+          stroke-width="6"/>
+
+    <circle cx="47"
+            cy="100"
+            r="12"
+            fill="none"
+            stroke="#e0f7ff"
+            stroke-width="3"/>
+
+    <circle cx="77"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+    <text x="47"
+          y="122"
+          text-anchor="middle"
+          class="tiny">
+      CT-101
+    </text>
+
+  </g>
+
+  <text x="647"
+        y="425"
+        text-anchor="middle"
+        class="label">
+    Coagulation
+  </text>
+
+
+  <!-- CHEMICAL DOSING -->
+
+  <g transform="translate(580 455)"
+     filter="url(#softShadow)">
+
+    <rect width="135"
+          height="70"
+          rx="12"
+          class="sensor"/>
+
+    <text x="67"
+          y="26"
+          text-anchor="middle"
+          class="label">
+      CHEM DOSING
+    </text>
+
+    <text x="67"
+          y="48"
+          text-anchor="middle"
+          class="value">
+      42 L/h
+    </text>
+
+    <circle cx="116"
+            cy="20"
+            r="6"
+            class="statusGreen"/>
+
+    <text x="67"
+          y="62"
+          text-anchor="middle"
+          class="tiny">
+      P-201
+    </text>
+
+  </g>
+
+  <path class="pipe"
+        d="M647 455 V400"/>
+
+
+  <!-- ========================================================= -->
+  <!-- 05 FLOCCULATION -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(780 260)"
+     filter="url(#softShadow)">
+
+    <rect width="95"
+          height="140"
+          rx="12"
+          class="equip"/>
+
+    <rect x="7"
+          y="65"
+          width="81"
+          height="68"
+          class="tank"/>
+
+    <path d="M25 35 V110
+             M70 35 V110"
+          stroke="#334155"
+          stroke-width="5"/>
+
+    <path d="M15 55 H35
+             M60 55 H80"
+          stroke="#334155"
+          stroke-width="5"/>
+
+    <circle cx="78"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+    <text x="47"
+          y="122"
+          text-anchor="middle"
+          class="tiny">
+      FL-101
+    </text>
+
+  </g>
+
+  <text x="827"
+        y="425"
+        text-anchor="middle"
+        class="label">
+    Flocculation
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- 06 SEDIMENTATION -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(960 260)"
+     filter="url(#softShadow)">
+
+    <path d="M10 35 H85
+             L75 130
+             H20 Z"
+          class="equip"/>
+
+    <path d="M18 72 H78
+             V128
+             H22 Z"
+          class="tank"/>
+
+    <path d="M30 115
+             L47 80
+             L64 115"
+          fill="none"
+          stroke="#64748b"
+          stroke-width="4"/>
+
+    <circle cx="76"
+            cy="22"
+            r="5"
+            class="statusGreen"/>
+
+    <text x="47"
+          y="121"
+          text-anchor="middle"
+          class="tiny">
+      ST-101
+    </text>
+
+  </g>
+
+  <text x="1007"
+        y="425"
+        text-anchor="middle"
+        class="label">
+    Sedimentation
+  </text>
+
+
+  <!-- TURBIDITY -->
+
+  <g transform="translate(950 455)"
+     filter="url(#softShadow)">
+
+    <rect width="115"
+          height="70"
+          rx="12"
+          class="sensor"/>
+
+    <circle cx="96"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+    <text x="57"
+          y="27"
+          text-anchor="middle"
+          class="label">
+      TURBIDITY
+    </text>
+
+    <text x="57"
+          y="49"
+          text-anchor="middle"
+          class="value">
+      1.8 NTU
+    </text>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- 07 MEDIA FILTER -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1140 245)"
+     filter="url(#softShadow)">
+
+    <rect width="95"
+          height="160"
+          rx="14"
+          class="equip"/>
+
+    <ellipse cx="47"
+             cy="48"
+             rx="38"
+             ry="9"
+             fill="#cbd5e1"
+             stroke="#64748b"/>
+
+    <rect x="10"
+          y="48"
+          width="75"
+          height="92"
+          fill="#f8fafc"
+          stroke="#64748b"
+          stroke-width="2"/>
+
+    <rect x="12"
+          y="50"
+          width="71"
+          height="18"
+          fill="#38bdf8"
+          opacity=".75"/>
+
+    <rect x="12"
+          y="68"
+          width="71"
+          height="24"
+          fill="url(#sand)"/>
+
+    <rect x="12"
+          y="92"
+          width="71"
+          height="24"
+          fill="url(#carbon)"/>
+
+    <rect x="12"
+          y="116"
+          width="71"
+          height="22"
+          fill="url(#manganese)"/>
+
+    <path d="M47 48 V25"
+          class="pipeThin"/>
+
+    <circle cx="47"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+    <text x="47"
+          y="157"
+          text-anchor="middle"
+          class="tiny">
+      MF-101
+    </text>
+
+  </g>
+
+  <text x="1187"
+        y="425"
+        text-anchor="middle"
+        class="label">
+    Media Filtration
+  </text>
+
+
+  <!-- MEDIA STATUS -->
+
+  <g transform="translate(1115 455)"
+     filter="url(#softShadow)">
+
+    <rect width="135"
+          height="70"
+          rx="12"
+          class="sensor"/>
+
+    <text x="67"
+          y="22"
+          text-anchor="middle"
+          class="label">
+      MEDIA FILTER
+    </text>
+
+    <text x="67"
+          y="40"
+          text-anchor="middle"
+          class="small">
+      SILICA • CARBON
+    </text>
+
+    <text x="67"
+          y="56"
+          text-anchor="middle"
+          class="small">
+      MANGANESE
+    </text>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- 08 RO -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1320 255)"
+     filter="url(#softShadow)">
+
+    <rect width="95"
+          height="150"
+          rx="12"
+          class="equip"/>
+
+    <circle cx="30"
+            cy="72"
+            r="22"
+            fill="#e0f2fe"
+            stroke="#0284c7"
+            stroke-width="4"/>
+
+    <circle cx="65"
+            cy="72"
+            r="22"
+            fill="#e0f2fe"
+            stroke="#0284c7"
+            stroke-width="4"/>
+
+    <path d="M20 112 H75"
+          stroke="#334155"
+          stroke-width="7"/>
+
+    <circle cx="78"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+    <text x="47"
+          y="140"
+          text-anchor="middle"
+          class="tiny">
+      RO-101
+    </text>
+
+  </g>
+
+  <text x="1367"
+        y="425"
+        text-anchor="middle"
+        class="label">
+    RO System
+  </text>
+
+
+  <!-- TDS -->
+
+  <g transform="translate(1300 455)"
+     filter="url(#softShadow)">
+
+    <rect width="115"
+          height="70"
+          rx="12"
+          class="sensor"/>
+
+    <text x="57"
+          y="25"
+          text-anchor="middle"
+          class="label">
+      TDS
+    </text>
+
+    <text x="57"
+          y="47"
+          text-anchor="middle"
+          class="value">
+      86 ppm
+    </text>
+
+    <circle cx="95"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- 09 UV / OZONE -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1500 260)"
+     filter="url(#softShadow)">
+
+    <rect width="95"
+          height="140"
+          rx="12"
+          class="equip"/>
+
+    <rect x="13"
+          y="52"
+          width="69"
+          height="65"
+          rx="30"
+          fill="#f0fdf4"
+          stroke="#16a34a"
+          stroke-width="4"/>
+
+    <path d="M27 84
+             Q47 55 68 84
+             Q47 112 27 84"
+          fill="none"
+          stroke="#22c55e"
+          stroke-width="4"/>
+
+    <circle cx="76"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+    <text x="47"
+          y="135"
+          text-anchor="middle"
+          class="tiny">
+      UV-101
+    </text>
+
+  </g>
+
+  <text x="1547"
+        y="425"
+        text-anchor="middle"
+        class="label">
+    UV / Ozone
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- 10 CLEAN WATER TANK -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1680 255)"
+     filter="url(#softShadow)">
+
+    <ellipse cx="47"
+             cy="15"
+             rx="47"
+             ry="13"
+             fill="#cbd5e1"
+             stroke="#334155"
+             stroke-width="2"/>
+
+    <rect x="0"
+          y="15"
+          width="94"
+          height="130"
+          rx="4"
+          class="equip"/>
+
+    <rect x="4"
+          y="50"
+          width="86"
+          height="91"
+          class="tank"/>
+
+    <path d="M8 61
+             Q20 55 32 61
+             T56 61
+             T80 61
+             T88 61"
+          class="waterWave"/>
+
+    <ellipse cx="47"
+             cy="145"
+             rx="47"
+             ry="13"
+             fill="#0284c7"
+             opacity=".75"/>
+
+    <text x="47"
+          y="101"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="10"
+          font-weight="700"
+          fill="#ffffff">
+      88%
+    </text>
+
+
+    <!-- LEVEL SENSOR -->
+
+    <rect x="40"
+          y="3"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#334155"/>
+
+    <rect x="8"
+          y="-54"
+          width="64"
+          height="29"
+          rx="6"
+          class="sensor"/>
+
+    <circle cx="17"
+            cy="-40"
+            r="4"
+            class="statusGreen"/>
+
+    <text x="40"
+          y="-37"
+          text-anchor="middle"
+          class="tag">
+      LT-201
+    </text>
+
+    <line x1="47"
+          y1="-25"
+          x2="47"
+          y2="3"
+          class="pipeThin"/>
+
+
+    <!-- BREATHER -->
+
+    <path d="M70 15
+             V-12
+             H80
+             V-25"
+          class="pipeThin"/>
+
+    <path d="M74 -25
+             H87"
+          stroke="#334155"
+          stroke-width="4"
+          stroke-linecap="round"/>
+
+    <text x="75"
+          y="-31"
+          text-anchor="middle"
+          class="tiny">
+      VENT
+    </text>
+
+
+    <!-- MANUAL DRAIN -->
+
+    <path d="M47 145 V175"
+          stroke="#0f766e"
+          stroke-width="5"
+          fill="none"
+          stroke-linecap="round"/>
+
+    <g transform="translate(47 190)">
+
+      <path d="M-16 0
+               L0 -12
+               L0 12 Z
+               M16 0
+               L0 -12
+               L0 12 Z"
+            class="valve"/>
+
+      <circle cx="0"
+              cy="-25"
+              r="10"
+              fill="#ffffff"
+              stroke="#334155"
+              stroke-width="3"/>
+
+      <path d="M-7 -25 H7
+               M0 -32 V-18"
+            stroke="#334155"
+            stroke-width="2.5"
+            stroke-linecap="round"/>
+
+    </g>
+
+    <text x="8"
+          y="190"
+          class="tag">
+      DV-201
+    </text>
+
+    <text x="8"
+          y="202"
+          class="tiny">
+      MANUAL DRAIN
+    </text>
+
+    <text x="47"
+          y="165"
+          text-anchor="middle"
+          class="small">
+      LEVEL 88%
+    </text>
+
+  </g>
+
+  <text x="1727"
+        y="475"
+        text-anchor="middle"
+        class="label">
+    Clean Water Tank
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- CONTROL VALVE -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(730 306)">
+
+    <path d="M-18 0
+             L0 -16
+             L0 16 Z
+             M18 0
+             L0 -16
+             L0 16 Z"
+          class="valve"/>
+
+    <circle cx="0"
+            cy="-28"
+            r="8"
+            class="statusGreen"/>
+
+  </g>
+
+  <text x="730"
+        y="285"
+        text-anchor="middle"
+        class="small">
+    V-01
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- CLEAN WATER DELIVERY -->
+  <!-- ========================================================= -->
+
+  <path class="pipe"
+        d="M1727 400
+           V620
+           H1640
+           V650"/>
+
+  <path class="flow"
+        d="M1727 400
+           V620
+           H1640
+           V650"/>
+
+  <text x="1660"
+        y="605"
+        text-anchor="middle"
+        class="small">
+    CLEAN WATER DELIVERY
+  </text>
+
+
+  <!-- ========================================================= -->
+  <!-- CLEAN WATER PUMP -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1420 650)"
+     filter="url(#softShadow)">
+
+    <rect width="220"
+          height="170"
+          rx="16"
+          class="equip"/>
+
+    <circle cx="78"
+            cy="82"
+            r="48"
+            fill="#e0f2fe"
+            stroke="#0f766e"
+            stroke-width="5"/>
+
+    <path d="M55 82
+             Q78 45 101 82
+             Q78 119 55 82"
+          fill="none"
+          stroke="#0f766e"
+          stroke-width="7"/>
+
+    <path d="M126 82 H190"
+          stroke="#0f766e"
+          stroke-width="8"
+          marker-end="url(#arrow)"/>
+
+    <circle cx="190"
+            cy="82"
+            r="7"
+            class="statusGreen"/>
+
+    <text x="110"
+          y="142"
+          text-anchor="middle"
+          class="label">
+      CLEAN WATER PUMP
+    </text>
+
+    <text x="110"
+          y="158"
+          text-anchor="middle"
+          class="tiny">
+      P-301 • 38 m³/h
+    </text>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- LEVEL MONITOR -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1580 540)"
+     filter="url(#softShadow)">
+
+    <rect width="120"
+          height="70"
+          rx="12"
+          class="sensor"/>
+
+    <text x="60"
+          y="25"
+          text-anchor="middle"
+          class="label">
+      LEVEL
+    </text>
+
+    <text x="60"
+          y="48"
+          text-anchor="middle"
+          class="value">
+      88%
+    </text>
+
+    <circle cx="101"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- WATER QUALITY -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1250 650)"
+     filter="url(#softShadow)">
+
+    <rect width="145"
+          height="100"
+          rx="14"
+          class="sensor"/>
+
+    <text x="72"
+          y="28"
+          text-anchor="middle"
+          class="label">
+      WATER QUALITY
+    </text>
+
+    <text x="72"
+          y="55"
+          text-anchor="middle"
+          class="value">
+      pH 7.1
+    </text>
+
+    <text x="72"
+          y="78"
+          text-anchor="middle"
+          class="value">
+      TDS 86 ppm
+    </text>
+
+    <circle cx="122"
+            cy="18"
+            r="5"
+            class="statusGreen"/>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- CONTROL PANEL -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(105 610)"
+     filter="url(#softShadow)">
+
+    <rect width="720"
+          height="270"
+          rx="18"
+          class="panel"/>
+
+    <text x="30"
+          y="40"
+          font-family="Arial"
+          font-size="22"
+          font-weight="700"
+          fill="#ffffff">
+      ABN WATER TREATMENT CONTROL PANEL
+    </text>
+
+
+    <!-- ======================================================= -->
+    <!-- STATUS SCREEN -->
+    <!-- ======================================================= -->
+
+    <rect x="30"
+          y="65"
+          width="315"
+          height="165"
+          rx="10"
+          class="screen"/>
+
+    <text x="50"
+          y="92"
+          class="label">
+      PLANT STATUS
+    </text>
+
+    <circle cx="55"
+            cy="120"
+            r="9"
+            class="statusGreen"/>
+
+    <text x="75"
+          y="125"
+          font-family="Arial"
+          font-size="15"
+          font-weight="700"
+          fill="#166534">
+      RUNNING
+    </text>
+
+    <text x="50"
+          y="155"
+          class="small">
+      Raw Water Flow
+    </text>
+
+    <text x="250"
+          y="155"
+          class="value">
+      38 m³/h
+    </text>
+
+    <text x="50"
+          y="180"
+          class="small">
+      RO Pressure
+    </text>
+
+    <text x="250"
+          y="180"
+          class="value">
+      4.2 bar
+    </text>
+
+    <text x="50"
+          y="205"
+          class="small">
+      Clean Water Level
+    </text>
+
+    <text x="250"
+          y="205"
+          class="value">
+      88%
+    </text>
+
+
+    <!-- ======================================================= -->
+    <!-- CONTROL AREA -->
+    <!-- ======================================================= -->
+
+    <rect x="370"
+          y="65"
+          width="320"
+          height="165"
+          rx="10"
+          fill="#1e293b"
+          stroke="#334155"/>
+
+
+    <text x="395"
+          y="94"
+          font-family="Arial"
+          font-size="15"
+          font-weight="700"
+          fill="#ffffff">
+      CONTROL
+    </text>
+
+
+    <!-- START BUTTON -->
+
+    <rect x="395"
+          y="108"
+          width="110"
+          height="40"
+          rx="9"
+          fill="#16a34a"
+          stroke="#22c55e"
+          stroke-width="1.5"/>
+
+    <circle cx="414"
+            cy="128"
+            r="5"
+            fill="#bbf7d0"/>
+
+    <text x="462"
+          y="134"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="14"
+          font-weight="700"
+          fill="#ffffff">
+      START
+    </text>
+
+
+    <!-- STOP BUTTON -->
+
+    <rect x="520"
+          y="108"
+          width="110"
+          height="40"
+          rx="9"
+          fill="#dc2626"
+          stroke="#ef4444"
+          stroke-width="1.5"/>
+
+    <circle cx="539"
+            cy="128"
+            r="5"
+            fill="#fecaca"/>
+
+    <text x="586"
+          y="134"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="14"
+          font-weight="700"
+          fill="#ffffff">
+      STOP
+    </text>
+
+
+    <!-- MODE LABEL -->
+
+    <text x="395"
+          y="168"
+          font-family="Arial"
+          font-size="11"
+          font-weight="700"
+          fill="#94a3b8">
+      OPERATING MODE
+    </text>
+
+
+    <!-- AUTO / MAN SWITCH -->
+
+    <rect x="395"
+          y="178"
+          width="235"
+          height="36"
+          rx="18"
+          fill="#0f172a"
+          stroke="#475569"
+          stroke-width="2"/>
+
+
+    <!-- AUTO ACTIVE -->
+
+    <rect x="398"
+          y="181"
+          width="112"
+          height="30"
+          rx="15"
+          fill="#0f766e"/>
+
+    <circle cx="415"
+            cy="196"
+            r="5"
+            fill="#99f6e4"/>
+
+    <text x="460"
+          y="201"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="12"
+          font-weight="700"
+          fill="#ffffff">
+      AUTO
+    </text>
+
+
+    <!-- MANUAL -->
+
+    <rect x="512"
+          y="181"
+          width="115"
+          height="30"
+          rx="15"
+          fill="#334155"/>
+
+    <circle cx="528"
+            cy="196"
+            r="5"
+            fill="#94a3b8"/>
+
+    <text x="570"
+          y="201"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="12"
+          font-weight="700"
+          fill="#e2e8f0">
+      MAN
+    </text>
+
+
+    <!-- MODE STATUS -->
+
+    <circle cx="650"
+            cy="196"
+            r="6"
+            class="statusGreen"/>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- MEDIA FILTER LEGEND -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(860 700)">
+
+    <text x="0"
+          y="0"
+          class="label">
+      MEDIA FILTER
+    </text>
+
+    <rect x="0"
+          y="18"
+          width="18"
+          height="12"
+          rx="2"
+          fill="url(#sand)"/>
+
+    <text x="28"
+          y="29"
+          class="small">
+      Silica Sand
+    </text>
+
+    <rect x="0"
+          y="42"
+          width="18"
+          height="12"
+          rx="2"
+          fill="url(#carbon)"/>
+
+    <text x="28"
+          y="53"
+          class="small">
+      Activated Carbon
+    </text>
+
+    <rect x="0"
+          y="66"
+          width="18"
+          height="12"
+          rx="2"
+          fill="url(#manganese)"/>
+
+    <text x="28"
+          y="77"
+          class="small">
+      Manganese Media
+    </text>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- INSTRUMENTATION -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1030 700)">
+
+    <text x="0"
+          y="0"
+          class="label">
+      INSTRUMENTATION
+    </text>
+
+    <circle cx="12"
+            cy="32"
+            r="8"
+            fill="#22c55e"/>
+
+    <text x="30"
+          y="37"
+          class="small">
+      Normal / Running
+    </text>
+
+    <line x1="0"
+          y1="58"
+          x2="55"
+          y2="58"
+          class="pipe"/>
+
+    <text x="70"
+          y="63"
+          class="small">
+      Process Flow
+    </text>
+
+    <line x1="0"
+          y1="84"
+          x2="55"
+          y2="84"
+          class="flow"/>
+
+    <text x="70"
+          y="89"
+          class="small">
+      Animated Water Flow
+    </text>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- FIELD INSTRUMENTS -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(860 800)">
+
+    <rect width="300"
+          height="55"
+          rx="12"
+          fill="#f8fafc"
+          stroke="#cbd5e1"/>
+
+    <text x="18"
+          y="22"
+          class="label">
+      FIELD INSTRUMENTS
+    </text>
+
+    <text x="18"
+          y="42"
+          class="tiny">
+      LT-101 • LT-201 • FT • PT • TDS • TURBIDITY
+    </text>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- SYSTEM INFO -->
+  <!-- ========================================================= -->
+
+  <g transform="translate(1185 800)">
+
+    <rect width="320"
+          height="55"
+          rx="12"
+          fill="#f0fdfa"
+          stroke="#99f6e4"/>
+
+    <circle cx="22"
+            cy="28"
+            r="7"
+            class="statusGreen"/>
+
+    <text x="38"
+          y="25"
+          class="label">
+      SYSTEM ONLINE
+    </text>
+
+    <text x="38"
+          y="43"
+          class="tiny">
+      AUTO PROCESS • ALL SYSTEMS NORMAL
+    </text>
+
+  </g>
+
+
+  <!-- ========================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================= -->
+
+  <line x1="75"
+        y1="925"
+        x2="1725"
+        y2="925"
+        stroke="#cbd5e1"
+        stroke-width="1"/>
+
+  <text x="75"
+        y="952"
+        font-family="Arial"
+        font-size="11"
+        fill="#64748b">
+    ABN INDUSTRIAL DIGITAL ASSET
+  </text>
+
+  <text x="900"
+        y="952"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="11"
+        fill="#64748b">
+    WATER TREATMENT • RAW WATER → FILTRATION → RO → DISINFECTION → CLEAN WATER
+  </text>
+
+  <text x="1725"
+        y="952"
+        text-anchor="end"
+        font-family="Arial"
+        font-size="13"
+        font-weight="700"
+        fill="#0f766e">
+    Designed by ABN
+  </text>
+
+</svg>
