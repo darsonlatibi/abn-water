@@ -27,3 +27,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Internal scripts
+scripts/*.cjs
+
+# Customer release package
+abn-water.zip
